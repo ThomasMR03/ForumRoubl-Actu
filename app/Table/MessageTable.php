@@ -23,4 +23,9 @@ class MessageTable extends Table
 							", [$category_id], $one);
 	}
 
+	public function nbMessageSujet($id)
+	{
+		return $this->query(" SELECT messages.id, count(sujet_id) as nbSujet FROM messages LEFT JOIN sujets ON sujet_id = sujets.id WHERE sujets.id = ? ", [$id]);
+	}
+
 }

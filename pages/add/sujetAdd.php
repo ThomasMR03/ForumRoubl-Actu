@@ -2,10 +2,11 @@
 	$app = App::getInstance();
 
 	if ($_POST) {
-		if (!empty($_POST['titre'] && $_POST['description'])) {
+		if (!empty($_POST['titre'] && $_POST['description'] && $_POST['auteur'])) {
 			$req = $app->getTable('Sujet')->create(
-				["titre"=>$_POST['titre'], 
-				"description"=>$_POST['description']
+				["titre"=>htmlspecialchars($_POST['titre']), 
+				"description"=>htmlspecialchars($_POST['description']),
+				"auteur"=>htmlspecialchars($_POST['auteur'])
 				]);
 			if ($req) {
 				////message Flash
@@ -25,6 +26,7 @@
 <h2  class="description" style="text-align: center; border-bottom:6px solid  color: red; padding-bottom: 20px; margin-bottom: 20px;">Crée un sujet</h2>
 <form method="post">
 	<input type="hidden" name="id" value="">
+	<input type="hidden" name="auteur" value="<?= $_SESSION['Auth'] ?>">
 	<input class="form-control" type="text" name="titre" value="" placeholder="Titre du sujet" style="margin-bottom: 20px;">
 	<input class="form-control" type="text" name="description" value="" placeholder="Description" style="margin-bottom: 20px;">
 	<input class="myButton" type="submit" name="" style="margin-bottom: 80px;">

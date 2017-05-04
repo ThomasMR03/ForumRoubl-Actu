@@ -12,12 +12,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach (App::getInstance()->getTable('Sujet')->lastBySujet($_GET['id']) as $sujet) : ?>
+			
+			<?php foreach (App::getInstance()->getTable('Sujet')->lastBySujet($_GET['id']) as $sujet) {
+			foreach (App::getInstance()->getTable('message')->nbMessageSujet($sujet->id) as $nb) : ?>
 			<tr>
 			<td><a href="<?= $sujet->Url ?>"><p style="color: rgb(199,211,29)" class="action"><?= $sujet->titre ?></p></a>
 			<p style="color: #FFFFFF;"><?= $sujet->description ?></p></td>
+			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?= $nb->nbSujet ?></td>
+			<td><p style="color: #FFFFFF" class="action"><?= $sujet->auteur ?></td>
 			</tr>
-		<?php endforeach; ?>
+		<?php endforeach;} ?>
 		</tbody>
 	</table>
 
