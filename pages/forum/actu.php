@@ -5,9 +5,9 @@
 		<thead>
 			<tr>
 				<td><a class="description" href="index.php">Forum de Roubl'Actu</a></td>
-				<td class="description">Messages</td>
-				<td class="description">Auteur</td>
-				<td class="description">Derniers Messages</td>
+				<td class="description" style="text-align: center;">Messages</td>
+				<td class="description" style="text-align: center;">Auteur</td>
+				<td class="description" style="text-align: center;">Derniers Messages</td>
 				<td><a class="myButton" style="text-decoration: none;" href="index.php?p=Sujet.Add">Crée un sujet</a></td>
 			</tr>
 		</thead>
@@ -20,8 +20,8 @@
 			<td><a href="<?= $sujet->Url ?>"><p style="color: rgb(199,211,29)" class="action"><?= $sujet->titre ?></p></a>
 			<p style="color: #FFFFFF;"><?= $sujet->description ?></p></td>
 			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?= $nb->nbSujet ?></td>
-			<td><p style="color: #FFFFFF" class="action"><?= $sujet->auteur ?></td>
-			<td><p style="color: #FFFFFF" class="action"><?= $sms->auteur ?> </br> <?=$sms->date ?></p></td>
+			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?= $sujet->auteur ?></td>
+			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?=$sms->date ?> </br> <?= $sms->auteur ?></p></td>
 			</tr>
 		<?php endforeach;}} ?>
 		</tbody>
