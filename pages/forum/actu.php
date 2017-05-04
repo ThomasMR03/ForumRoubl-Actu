@@ -1,4 +1,5 @@
 <?php $nbUser = App::getInstance()->getTable('User')->nombreUser(); ?>
+<?php $nbSms = App::getInstance()->getTable('message')->all(); ?>
 
 <table class="table">
 		<thead>
@@ -20,5 +21,5 @@
 		</tbody>
 	</table>
 
-	<h4 style="color: #FFFFFF">Nos membres ont posté un total de message(s)</h4>
-	<h4 style="color: #FFFFFF">Nous avons <?= count($nbUser) ?> membre(s) enregistré(s)</h4>
+	<h4 style="color: #FFFFFF">Nos membres ont posté un total de <?= count($nbSms) ?> message(s)</h4>.
+	<h4 style="color: #FFFFFF">Nous avons <?= count($nbUser) ?> membre(s) enregistré(s)</h4>.
