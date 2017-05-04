@@ -29,10 +29,19 @@ if ($page==='home') { //Si page = home
 	require ROOT.'/pages/users/login.php';
 }elseif ($page==='Disconnect') {
 	require ROOT.'/pages/users/disconnect.php';
+
 }elseif ($page==='Forum.Actu') {
 	require ROOT.'/pages/forum/actu.php';
+}elseif ($page==='Forum.Actu_Sujet') {
+	require ROOT.'/pages/forum/ActuSujet.php';
+
 }elseif ($page==='Sujet.Add') {
 	require ROOT.'/pages/add/sujetAdd.php';
+}elseif ($page==='Catégorie.Add') {
+	require ROOT.'/pages/add/categorieAdd.php';
+}elseif ($page==='Message.Add') {
+	require ROOT.'/pages/add/messageAdd.php';
+
 }elseif ($page==='403') {
 	require ROOT.'/pages/errors/403.php';
 }else{ //Page 404

@@ -3,17 +3,17 @@
 <table class="table">
 		<thead>
 			<tr>
-				<td class="description">Forum de Roubl'Actu</td>
-				<td class="description">Réponses</td>
+				<td><a class="description" href="index.php">Forum de Roubl'Actu</a></td>
+				<td class="description">Messages</td>
 				<td class="description">Auteur</td>
 				<td class="description">Derniers Messages</td>
 				<td><a class="myButton" style="text-decoration: none;" href="index.php?p=Sujet.Add">Crée un sujet</a></td>
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach (App::getInstance()->getTable('Sujet')->sujet() as $sujet) : ?>
+			<?php foreach (App::getInstance()->getTable('Sujet')->lastBySujet($_GET['id']) as $sujet) : ?>
 			<tr>
-			<td><a href=""><p style="color: rgb(199,211,29)" class="action"><?= $sujet->titre ?></p></a>
+			<td><a href="<?= $sujet->Url ?>"><p style="color: rgb(199,211,29)" class="action"><?= $sujet->titre ?></p></a>
 			<p style="color: #FFFFFF;"><?= $sujet->description ?></p></td>
 			</tr>
 		<?php endforeach; ?>

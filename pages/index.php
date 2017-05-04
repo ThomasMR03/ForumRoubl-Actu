@@ -7,18 +7,16 @@
 				<td class="description">Sujets</td>
 				<td class="description">Messages</td>
 				<td class="description">Derniers Messages</td>
+				<td><a class="myButton" style="text-decoration: none;" href="index.php?p=Catégorie.Add">Crée une catégorie</a></td>
 			</tr>
 		</thead>
 		<tbody>
+		<?php foreach (App::getInstance()->getTable('Categorie')->cat() as $cat) : ?>
 			<tr>
-			<td><a href="index.php?p=Forum.Actu"><p style="color: rgb(199,211,29)" class="action">Roubl'Actu</p></a>
-			<p style="color: #FFFFFF;">Découvrer l'actualité comme nul part ailleurs</p></td>
+			<td><a href="<?= $cat->Url ?>"><p style="color: rgb(199,211,29)" class="action"><?= $cat->titre ?></p></a>
+			<p style="color: #FFFFFF;"><?= $cat->description ?></p></td>
 			</tr>
-
-			<tr>
-				<td><a href="index.php?p=Lab"><p style="color: rgb(199,211,29)" class="action">Roubl'A Lab</p></a>
-				<p style="color: #FFFFFF;">Vous avez des idées ? Venez nous en parler !</p></td>
-			</tr>
+		<?php endforeach; ?>
 		</tbody>
 	</table>
 
