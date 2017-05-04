@@ -5,7 +5,7 @@ use Core\Entity\Entity;
 /**
 * 
 */
-class DemoEntity extends Entity
+class UserEntity extends Entity
 {
 
 }
