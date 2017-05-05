@@ -28,4 +28,9 @@ class SujetTable extends Table
 							", [$category_id], $one);
 	}
 
+	public function nbSujetCat($id)
+	{
+		return $this->query(" SELECT sujets.id, count(categorie_id) as nbSujetCat FROM sujets LEFT JOIN categories ON categorie_id = categories.id WHERE categories.id = ?", [$id]);
+	}
+
 }

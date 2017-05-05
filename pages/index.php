@@ -5,19 +5,21 @@
 		<thead>
 			<tr>
 				<td class="description">Forum de Roubl'Actu</td>
-				<td class="description">Sujets</td>
-				<td class="description">Messages</td>
-				<td class="description">Derniers Messages</td>
+				<td class="description" style="text-align: center;">Sujets</td>
+				<td class="description" style="text-align: center;">Messages</td>
+				<td class="description" style="text-align: center;">Derniers Messages</td>
 				<td><a class="myButton" style="text-decoration: none;" href="index.php?p=Catégorie.Add">Crée une catégorie</a></td>
 			</tr>
 		</thead>
 		<tbody>
-		<?php foreach (App::getInstance()->getTable('Categorie')->cat() as $cat) : ?>
+		<?php foreach (App::getInstance()->getTable('Categorie')->cat() as $cat) { ?>
+		<?php foreach (App::getInstance()->getTable('sujet')->nbSujetCat($cat->id) as $nbSujet) :?>
 			<tr>
 			<td><a href="<?= $cat->Url ?>"><p style="color: rgb(199,211,29)" class="action"><?= $cat->titre ?></p></a>
 			<p style="color: #FFFFFF;"><?= $cat->description ?></p></td>
+			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?=$nbSujet->nbSujetCat?></p></td>
 			</tr>
-		<?php endforeach; ?>
+		<?php endforeach;} ?>
 		</tbody>
 	</table>
 
