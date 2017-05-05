@@ -21,7 +21,7 @@
 			<p style="color: #FFFFFF;"><?= $sujet->description ?></p></td>
 			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?= $nb->nbSujet ?></td>
 			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?= $sujet->auteur ?></td>
-			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?=$sms->date ?> </br> <?= $sms->auteur ?></p></td>
+			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?=$sms->date_creation_fr ?> </br> <?= $sms->auteur ?></p></td>
 			</tr>
 		<?php endforeach;}} ?>
 		</tbody>

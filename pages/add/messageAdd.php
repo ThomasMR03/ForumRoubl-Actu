@@ -5,11 +5,11 @@ $heure = date("H:i:s");
 $app = App::getInstance();
 
 if ($_POST) {
-		if (!empty($_POST['sujet_id'] && $_POST['auteur'] && $_POST['message'] && $_POST['date'])) {
+		if (!empty($_POST['sujet_id'] && $_POST['auteur'] && $_POST['message'] && $_POST['date_creation'])) {
 			$req = $app->getTable('message')->create(
 				[
 				"sujet_id"=>htmlspecialchars($_POST['sujet_id']),
-				"date"=>htmlspecialchars($_POST['date']),
+				"date_creation"=>htmlspecialchars($_POST['date_creation']),
 				"auteur"=>htmlspecialchars($_POST['auteur']),
 				"message"=>htmlspecialchars($_POST['message'])
 				]);
@@ -37,7 +37,7 @@ if ($_POST) {
 				<form method="post">
 					<input type="hidden" name="sujet_id" value="<?= $_GET['id'] ?>">
 					<input type="hidden" name="auteur" value="<?= $_SESSION['Auth']?>">
-					<input type="hidden" name="date" value="<?= $date?> <?= $heure ?>">
+					<input type="hidden" name="date_creation" value="<?= $date?> <?= $heure ?>">
 					<textarea class="form-control" name="message" placeholder="Ajouter votre message" ></textarea>
 					<input class="myButton" type="submit" name="" style="margin-top: 20px;">
 				</form>
