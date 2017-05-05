@@ -9,7 +9,7 @@ class CategorieEntity extends Entity
 {
 	public function getUrl()
 	{
-		return 'index.php?p=Forum.Actu&id='.$this->id;
+		return 'index.php?p=Forum.Actu&idC='.$this->id;
 	}
 
 }

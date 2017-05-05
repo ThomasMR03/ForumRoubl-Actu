@@ -8,22 +8,23 @@
 				<td class="description" style="text-align: center;">Messages</td>
 				<td class="description" style="text-align: center;">Auteur</td>
 				<td class="description" style="text-align: center;">Derniers Messages</td>
-				<td><a class="myButton" style="text-decoration: none;" href="index.php?p=Sujet.Add">Crée un sujet</a></td>
+				<td><a class="myButton" style="text-decoration: none;" href="index.php?p=Sujet.Add&idC=<?=$_GET['idC']?>">
+				Crée un sujet</a></td>
 			</tr>
 		</thead>
 		<tbody>
-			
-			<?php foreach (App::getInstance()->getTable('Sujet')->lastBySujet($_GET['id']) as $sujet) {
-			foreach (App::getInstance()->getTable('message')->nbMessageSujet($sujet->id) as $nb) {
-			foreach (App::getInstance()->getTable('message')->lastByMessageSujet($sujet->id) as $sms) : ?>
+			<?php foreach (App::getInstance()->getTable('Sujet')->lastBySujet() as $sujet) {
+			foreach (App::getInstance()->getTable('message')->nbMessageSujet($sujet->id) as $nb) { ?>
 			<tr>
 			<td><a href="<?= $sujet->Url ?>"><p style="color: rgb(199,211,29)" class="action"><?= $sujet->titre ?></p></a>
 			<p style="color: #FFFFFF;"><?= $sujet->description ?></p></td>
 			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?= $nb->nbSujet ?></td>
 			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?= $sujet->auteur ?></td>
-			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?=$sms->date_creation_fr ?> </br> <?= $sms->auteur ?></p></td>
-			</tr>
-		<?php endforeach;}} ?>
+			<?php foreach (App::getInstance()->getTable('message')->lastByMessageSujet($sujet->id) as $sms) { ?>
+			<?php if(isset($sms)) : ?>
+			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?= $sms->date_creation_fr ?> </br> <?= $sms->auteur ?></p></td>
+			<?php endif; ?>
+		<?php }}} ?>
 		</tbody>
 	</table>
 

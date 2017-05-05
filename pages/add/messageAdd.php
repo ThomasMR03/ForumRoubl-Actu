@@ -5,9 +5,10 @@ $heure = date("H:i:s");
 $app = App::getInstance();
 
 if ($_POST) {
-		if (!empty($_POST['sujet_id'] && $_POST['auteur'] && $_POST['message'] && $_POST['date_creation'])) {
+		if (!empty($_POST['categorie_sms_id'] && $_POST['sujet_id'] && $_POST['auteur'] && $_POST['message'] && $_POST['date_creation'])) {
 			$req = $app->getTable('message')->create(
 				[
+				"categorie_sms_id"=>htmlspecialchars($_POST['categorie_sms_id']),
 				"sujet_id"=>htmlspecialchars($_POST['sujet_id']),
 				"date_creation"=>htmlspecialchars($_POST['date_creation']),
 				"auteur"=>htmlspecialchars($_POST['auteur']),
@@ -15,7 +16,7 @@ if ($_POST) {
 				]);
 			if ($req) {
 				////message Flash
-				header('location: index.php?p=Forum.Actu_Sujet&id='.$_GET['id'])
+				header('location: index.php?p=Forum.Actu_Sujet&idC='.$_GET['idC'].'&idS='.$_GET['idS'])
 				?>
 				<div class="alert alert-success">Bien enregistré</div>
 				<?php
@@ -35,7 +36,8 @@ if ($_POST) {
         <div class="commentaireTexte">
 			<h2>Rediger votre message</h2>
 				<form method="post">
-					<input type="hidden" name="sujet_id" value="<?= $_GET['id'] ?>">
+					<input type="hidden" name="categorie_sms_id" value="<?= $_GET['idC'] ?>">
+					<input type="hidden" name="sujet_id" value="<?= $_GET['idS'] ?>">
 					<input type="hidden" name="auteur" value="<?= $_SESSION['Auth']?>">
 					<input type="hidden" name="date_creation" value="<?= $date?> <?= $heure ?>">
 					<textarea class="form-control" name="message" placeholder="Ajouter votre message" ></textarea>

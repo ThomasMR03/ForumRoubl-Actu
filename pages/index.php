@@ -13,13 +13,15 @@
 		</thead>
 		<tbody>
 		<?php foreach (App::getInstance()->getTable('Categorie')->cat() as $cat) { ?>
+		<?php foreach (App::getInstance()->getTable('Categorie')->nbSmsCat($cat->id) as $nbSmsCat) {?>
 		<?php foreach (App::getInstance()->getTable('sujet')->nbSujetCat($cat->id) as $nbSujet) :?>
 			<tr>
 			<td><a href="<?= $cat->Url ?>"><p style="color: rgb(199,211,29)" class="action"><?= $cat->titre ?></p></a>
 			<p style="color: #FFFFFF;"><?= $cat->description ?></p></td>
 			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?=$nbSujet->nbSujetCat?></p></td>
+			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?=$nbSmsCat->nbSmsCat?></p></td>
 			</tr>
-		<?php endforeach;} ?>
+		<?php endforeach;}} ?>
 		</tbody>
 	</table>
 
