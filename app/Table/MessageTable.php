@@ -42,4 +42,18 @@ class MessageTable extends Table
 							", [$category_id], $one);
 	}
 
+	public function lastByMessageCat($category_id, $one=false)
+	{
+		return $this->query(" SELECT messages.id,
+									 messages.message,
+								 	 messages.auteur,
+								 	 DATE_FORMAT(date_creation, 'Le %d/%m/%Y à %H:%i:%s') as date_creation_fr
+								FROM messages
+								LEFT JOIN categories
+									ON categorie_sms_id = categories.id
+								WHERE categories.id = ?
+								ORDER BY date_creation_fr DESC LIMIT 0, 1
+							", [$category_id], $one);
+	}
+
 }

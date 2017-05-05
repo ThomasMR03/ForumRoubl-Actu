@@ -14,14 +14,18 @@
 		<tbody>
 		<?php foreach (App::getInstance()->getTable('Categorie')->cat() as $cat) { ?>
 		<?php foreach (App::getInstance()->getTable('Categorie')->nbSmsCat($cat->id) as $nbSmsCat) {?>
-		<?php foreach (App::getInstance()->getTable('sujet')->nbSujetCat($cat->id) as $nbSujet) :?>
+		<?php foreach (App::getInstance()->getTable('sujet')->nbSujetCat($cat->id) as $nbSujet) {?>
 			<tr>
 			<td><a href="<?= $cat->Url ?>"><p style="color: rgb(199,211,29)" class="action"><?= $cat->titre ?></p></a>
 			<p style="color: #FFFFFF;"><?= $cat->description ?></p></td>
 			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?=$nbSujet->nbSujetCat?></p></td>
 			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?=$nbSmsCat->nbSmsCat?></p></td>
+			<?php foreach (App::getInstance()->getTable('message')->lastByMessageCat($cat->id) as $sms) : ?>
+			<?php if(isset($sms)) : ?>
+			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?= $sms->date_creation_fr ?> </br> <?= $sms->auteur ?></p></td>
+			<?php endif; ?>
 			</tr>
-		<?php endforeach;}} ?>
+		<?php endforeach;}}} ?>
 		</tbody>
 	</table>
 

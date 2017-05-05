@@ -9,7 +9,7 @@ use Core\Table\Table;
 class SujetTable extends Table
 {
 
-	public function lastBySujet()
+	public function lastBySujet($category_id, $one=false)
 	{
 		return $this->query(" SELECT sujets.id,
 								 	 sujets.titre,
@@ -18,8 +18,9 @@ class SujetTable extends Table
 								FROM sujets
 								LEFT JOIN categories
 									ON categorie_id = categories.id
+									WHERE categories.id = ?
 								ORDER BY sujets.id DESC
-							");
+							", [$category_id], $one);
 	}
 
 	public function nbSujetCat($id)

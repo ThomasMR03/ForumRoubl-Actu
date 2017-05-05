@@ -13,7 +13,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach (App::getInstance()->getTable('Sujet')->lastBySujet() as $sujet) {
+			<?php foreach (App::getInstance()->getTable('Sujet')->lastBySujet($_GET['idC']) as $sujet) {
 			foreach (App::getInstance()->getTable('message')->nbMessageSujet($sujet->id) as $nb) { ?>
 			<tr>
 			<td><a href="<?= $sujet->Url ?>"><p style="color: rgb(199,211,29)" class="action"><?= $sujet->titre ?></p></a>
