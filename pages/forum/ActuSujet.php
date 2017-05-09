@@ -1,3 +1,7 @@
+<?php if(isset($_SESSION['Auth'])){
+	$utilisateurs = App::getInstance()->getTable('User')->find($_SESSION['Id']);
+} ?>
+
 <div class="col-md-2">
 	
 </div>
@@ -13,6 +17,13 @@
 <?php foreach (App::getInstance()->getTable('message')->lastByMessage($_GET['idS']) as $sms) : ?>
 	<div class="commentaire">
 	<div class="commentairePersonne">
+	<?php if(isset($_SESSION['Auth'])): ?>
+       	<?php if($utilisateurs->membre_rang == 'Admin'): ?>
+	<form action="index.php?p=Message.Del" method="post" class="formComDelete">
+		<button style="margin-left: 10px;" class="buttonComDelete" type="submit" value="<?=$sms->id?>" name="id">X</button>
+	</form>
+	<?php else : ?><?php endif; ?>
+    <?php else : ?><?php endif; ?>
 	<p style="float: right;"><?= $sms->date_creation_fr ?></p>
 	<h5><?= $sms->auteur ?></h5>
 	<p><?= $sms->message ?></p>

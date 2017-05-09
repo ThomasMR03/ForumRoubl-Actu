@@ -1,5 +1,8 @@
 <?php $nbUser = App::getInstance()->getTable('User')->nombreUser(); ?>
 <?php $nbSms = App::getInstance()->getTable('message')->all(); ?>
+<?php if(isset($_SESSION['Auth'])){
+	$utilisateurs = App::getInstance()->getTable('User')->find($_SESSION['Id']);
+} ?>
 
 <table class="table">
 		<thead>
@@ -23,6 +26,13 @@
 			<?php foreach (App::getInstance()->getTable('message')->lastByMessageSujet($sujet->id) as $sms) { ?>
 			<?php if(isset($sms)) : ?>
 			<td><p style="color: #FFFFFF; text-align: center;" class="action"><?= $sms->date_creation_fr ?> </br> <?= $sms->auteur ?></p></td>
+			<?php if(isset($_SESSION['Auth'])): ?>
+          	<?php if($utilisateurs->membre_rang == 'Admin'): ?>
+			<td><form action="index.php?p=Message.Del" method="post" class="formComDelete">
+				<button class="buttonComDelete" type="submit" value="<?=$sujet->id?>" name="id">X</button>
+			</form></td>
+			<?php else : ?><?php endif; ?>
+       		<?php else : ?><?php endif; ?>
 			<?php endif; ?>
 		<?php }}} ?>
 		</tbody>

@@ -42,6 +42,11 @@ if ($page==='home') { //Si page = home
 }elseif ($page==='Message.Add') {
 	require ROOT.'/pages/add/messageAdd.php';
 
+}elseif ($page==='Sujet.Del') {
+	require ROOT.'/pages/del/sujetDel.php';
+}elseif ($page==='Message.Del') {
+	require ROOT.'/pages/del/messageDel.php';
+
 }elseif ($page==='403') {
 	require ROOT.'/pages/errors/403.php';
 }else{ //Page 404
