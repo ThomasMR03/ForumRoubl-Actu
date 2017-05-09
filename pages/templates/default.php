@@ -24,7 +24,7 @@
       <a style="color: white;" class="navbar-brand" href="index.php">Forum Roubl'Actu</a>
     </div>
     <ul class="nav navbar-nav">
-
+      <li><a style="color: white;" href="http://newapp.loc">Roubl'Actu</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
 

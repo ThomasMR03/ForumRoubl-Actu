@@ -2,6 +2,12 @@
 	$utilisateurs = App::getInstance()->getTable('User')->find($_SESSION['Id']);
 } ?>
 
+<?php $app = App::getInstance();
+		$post = $app->getTable('sujet')->find($_GET['idS']);
+		if ($post===false) {
+		$app->notFound();
+		} ?>
+
 <div class="col-md-2">
 	
 </div>
@@ -10,7 +16,7 @@
 <div class="commentaire">
 	<div id="scroll"></div>
 	<?php if(isset($_SESSION['Auth'])): ?>
-	<h4>Message<a class="myButton" style="text-decoration: none; float: right; padding-bottom: 5px;" href="index.php?p=Message.Add&idC=<?= $_GET['idC'] ?>&idS=<?= $_GET['idS'] ?>">
+	<h4><?= $post->titre ?><a class="myButton" style="text-decoration: none; float: right; padding-bottom: 5px;" href="index.php?p=Message.Add&idC=<?= $_GET['idC'] ?>&idS=<?= $_GET['idS'] ?>">
 	Crée un message</a></h4>
 	<?php else : ?>
 	<h4>Message</h4>
