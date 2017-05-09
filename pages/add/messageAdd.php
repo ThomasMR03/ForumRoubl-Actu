@@ -1,3 +1,8 @@
+<?php $utilisateurs = App::getInstance()->getTable('User')->find($_SESSION['Id']); ?>
+<?php if(isset($_SESSION['Auth'])): ?>
+<?php else : header('location: index.php'); ?>
+<?php endif; ?>
+
 <?php 
 
 $date = date('Y-m-d');
