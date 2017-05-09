@@ -9,8 +9,12 @@
 <div class="col-md-8">
 <div class="commentaire">
 	<div id="scroll"></div>
+	<?php if(isset($_SESSION['Auth'])): ?>
 	<h4>Message<a class="myButton" style="text-decoration: none; float: right; padding-bottom: 5px;" href="index.php?p=Message.Add&idC=<?= $_GET['idC'] ?>&idS=<?= $_GET['idS'] ?>">
 	Crée un message</a></h4>
+	<?php else : ?>
+	<h4>Message</h4>
+	<?php endif; ?>
 
 	<div id="commentaire">
 	<span>

@@ -11,8 +11,11 @@
 				<td class="description" style="text-align: center;">Messages</td>
 				<td class="description" style="text-align: center;">Auteur</td>
 				<td class="description" style="text-align: center;">Derniers Messages</td>
+				<?php if(isset($_SESSION['Auth'])): ?>
 				<td><a class="myButton" style="text-decoration: none;" href="index.php?p=Sujet.Add&idC=<?=$_GET['idC']?>">
 				Crée un sujet</a></td>
+				<?php else : ?>
+				<?php endif; ?>
 			</tr>
 		</thead>
 		<tbody>
